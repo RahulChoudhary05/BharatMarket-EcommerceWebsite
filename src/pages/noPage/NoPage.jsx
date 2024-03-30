@@ -1,4 +1,3 @@
-// import imagenot from "../../../public/img/notfound.png";
 import React from "react";
 
 const NoPage = () => {
