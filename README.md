@@ -28,7 +28,7 @@ Make sure you have the following installed:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/bharatmarket.git
+   git clone https://github.com/RahulChoudhary05/BharatMarket-EcommerceWebsite
    cd bharatmarket
 
 2. **Install dependencies:**
