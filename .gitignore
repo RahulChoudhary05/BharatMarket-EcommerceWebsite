@@ -1,4 +1,5 @@
-FirebaseConfig.jsx
+src/firebase/FirebaseConfig.jsx
+
 # Logs
 logs
 *.log
