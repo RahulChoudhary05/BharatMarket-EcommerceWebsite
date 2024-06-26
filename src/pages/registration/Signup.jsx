@@ -31,11 +31,12 @@ const Signup = () => {
   const userSignupFunction = async () => {
     // validation
     if (
-      userSignup.name === "" ||
+      userSignup.name.trim() === "" ||
       userSignup.email === "" ||
       userSignup.password === ""
     ) {
       toast.error("All Fields are required");
+      return;
     }
 
     setLoading(true);
@@ -78,6 +79,17 @@ const Signup = () => {
       navigate("/login");
     } catch (error) {
       console.log(error);
+      
+      if (error.code === 'auth/email-already-in-use') {
+        // Handle case where email is already in use
+        toast.error(error.message);
+      }
+      else if (error.code === 'auth/weak-password') {
+        toast.error('Password must be at least 6 characters long.');
+      } 
+      else {
+        toast.error('An error occurred during signup. Please try again later.');
+      }
       setLoading(false);
     }
   };
