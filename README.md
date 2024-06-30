@@ -42,6 +42,7 @@ Make sure you have the following installed:
    npm run dev
 
 The application should now be running on http://localhost:3000.
+The backend should now be running on http://localhost:4000.
 
 **Folder Structure**
 
