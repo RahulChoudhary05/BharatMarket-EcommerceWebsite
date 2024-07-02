@@ -58,10 +58,6 @@ bharatmarket/
 ├── package.json
 └── README.md
 
-**Features and Components**
-Create Navbar
-... (Include brief descriptions of each feature and component as listed in your document)
-
 Running the Project
 To run the project locally, use the following command:
 npm run dev
