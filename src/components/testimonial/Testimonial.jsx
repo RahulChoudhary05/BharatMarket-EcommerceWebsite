@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import image1 from "../../../public/img/ItMe1.jpg"
 import image2 from "../../../public/img/ItMe2.jpg"
 

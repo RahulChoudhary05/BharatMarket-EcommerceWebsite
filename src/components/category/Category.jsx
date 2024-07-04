@@ -37,7 +37,6 @@ const category = [
 ]
 
 const Category = () => {
-    // naviaget 
     const navigate = useNavigate();
     return (
         <div>
