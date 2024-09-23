@@ -42,6 +42,7 @@ Make sure you have the following installed:
    npm run dev
 
 The application should now be running on http://localhost:3000.
+The backend should now be running on http://localhost:4000.
 
 **Folder Structure**
 
@@ -56,10 +57,6 @@ bharatmarket/
 ├── .env
 ├── package.json
 └── README.md
-
-**Features and Components**
-Create Navbar
-... (Include brief descriptions of each feature and component as listed in your document)
 
 Running the Project
 To run the project locally, use the following command:
