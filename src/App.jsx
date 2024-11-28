@@ -34,7 +34,6 @@ const App = () => {
             path="/category/:categoryname"
             element={<CategoryPage />}
           />{" "}
-          {/* category Page route  */}
           <Route
             path="/user-dashboard"
             element={
