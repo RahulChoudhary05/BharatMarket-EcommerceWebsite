@@ -29,6 +29,7 @@ const Login = () => {
     // validation
     if (userLogin.email === "" || userLogin.password === "") {
       toast.error("All Fields are required");
+      return;
     }
 
     setLoading(true);
@@ -69,7 +70,7 @@ const Login = () => {
     } catch (error) {
       console.log(error);
       setLoading(false);
-      toast.error("Login Failed");
+      toast.error("email or password is incorrect");
     }
   };
   return (

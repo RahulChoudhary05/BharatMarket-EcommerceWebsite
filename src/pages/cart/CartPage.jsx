@@ -8,6 +8,7 @@ import { Timestamp, addDoc, collection } from "firebase/firestore";
 import { fireDB } from "../../firebase/FirebaseConfig";
 import BuyNowModal from "../../components/buyNowModal/BuyNowModal";
 import { Navigate } from "react-router";
+import validator from "validator";
 
 const CartPage = () => {
     const cartItems = useSelector((state) => state.cart);
@@ -57,10 +58,33 @@ const CartPage = () => {
         )
     });
 
-    const buyNowFunction = () => {
+    const buyNowFunction = async () => {
         // validation 
-        if (addressInfo.name === "" || addressInfo.address === "" || addressInfo.pincode === "" || addressInfo.mobileNumber === "") {
-            return toast.error("All Fields are required")
+        let errorMessage='';
+        function validatePincode(pincode) {
+            // Regular expression for a 6-digit number starting from 1-9
+            const regex = /^[1-9][0-9]{5}$/;
+            return regex.test(pincode);
+        }
+        if(!validatePincode(addressInfo.pincode)){
+            errorMessage = errorMessage + 'Invalid pinCode |'
+            // toast.error('Invalid pincode');
+            // return;
+        }
+        if(!validator.isMobilePhone(addressInfo.mobileNumber.trim(), 'en-IN')){
+            errorMessage = errorMessage + 'Invalid Mobile Number |'
+        }
+
+        
+        if (addressInfo.name.trim() === "" || addressInfo.address.trim() === "" || addressInfo.pincode === "" || addressInfo.mobileNumber.trim() === "") {
+            // return toast.error("All Fields are required");
+            errorMessage = errorMessage + 'All Fields required';
+        }
+
+        if(errorMessage){
+            toast.error(errorMessage);
+            errorMessage='';
+            return;
         }
 
         // Order Info 
@@ -82,7 +106,7 @@ const CartPage = () => {
         }
         try {
             const orderRef = collection(fireDB, 'order');
-            addDoc(orderRef, orderInfo);
+            await addDoc(orderRef, orderInfo);
             setAddressInfo({
                 name: "",
                 address: "",
@@ -91,7 +115,8 @@ const CartPage = () => {
             })
             toast.success("Order Placed Successfull")
         } catch (error) {
-            console.log(error)
+            console.log(error);
+            toast.error('Something went wrong while placing order');
         }
 
     }
